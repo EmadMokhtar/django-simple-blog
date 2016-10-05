@@ -14,7 +14,7 @@ class UserCommentForm(forms.ModelForm):
     error_msg = _(
         'Cannot be empty nor only contain spaces. Please fill in the field.')
 
-    bodytext = forms.CharField(widget=PagedownWidget())
+    bodytext = forms.CharField(widget=PagedownWidget(), lable='')
 
     class Meta:
         model = Comment
@@ -37,6 +37,7 @@ class CommentForm(UserCommentForm):
     user_email = forms.EmailField(label=_('E-mail'), required=False)
     captcha = MathCaptchaField(
         required=True, error_messages={'invalid': _('Welcome robot')})
+    bodytext = forms.CharField(widget=PagedownWidget(), lable='')
 
     class Meta:
         model = Comment
